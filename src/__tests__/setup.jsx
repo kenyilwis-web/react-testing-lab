@@ -1,7 +1,7 @@
 import { afterEach } from 'vitest'
 import { cleanup } from '@testing-library/react'
 import '@testing-library/jest-dom/vitest'
-import fetch from 'node-fetch';
+import { vi } from 'vitest';
 
   
 global.setFetchResponse = (val) => {
@@ -14,4 +14,5 @@ global.setFetchResponse = (val) => {
 
 afterEach(() => {
     cleanup();
+    vi.restoreAllMocks();
 })
