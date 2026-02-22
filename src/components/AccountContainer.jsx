@@ -7,14 +7,15 @@ import Sort from "./Sort";
 function AccountContainer() {
   const [transactions,setTransactions] = useState([])
   const [search,setSearch] = useState("")
-  // console.log(search)
 
+  // Load all transactions on initial render so the table is populated on startup.
   useEffect(()=>{
     fetch("http://localhost:6001/transactions")
     .then(r=>r.json())
     .then(data=>setTransactions(data))
   },[])
 
+  // Persist a new transaction and then append the API response to local state.
   function postTransaction(newTransaction){
     fetch('http://localhost:6001/transactions',{
       method: "POST",
@@ -26,8 +27,8 @@ function AccountContainer() {
     .then(r=>r.json())
     .then(data=>setTransactions([...transactions,data]))
   }
-  
-  // Sort function here
+
+  // Sort by the selected field while preserving existing values as strings.
   function onSort(sortBy){
     const sortedTransactions = [...transactions].sort((firstTransaction, secondTransaction) => {
       const firstValue = firstTransaction[sortBy] ?? "";
@@ -39,7 +40,7 @@ function AccountContainer() {
     setTransactions(sortedTransactions);
   }
 
-  // Filter using search here and pass new variable down
+  // Keep view-level filtering derived from state so original transactions remain source of truth.
   const displayedTransactions = transactions.filter((transaction) => {
     const value = search.toLowerCase();
 

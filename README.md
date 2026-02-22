@@ -1,95 +1,79 @@
-# Lab: Testing using Vitest
+# React Testing Lab
 
-## Overview
-Now that you have covered creating a testing suite, we can use the key principles of test-driven development to work with an existing app. Normally, you would build the testing while developing, but you were recently brought onto this project to add a testing suite! You are working to implement a testing suite for a banking application that allows users to track their expenditures by submitting and searching through them.
+A small banking transaction tracker built with React and tested with Vitest + Testing Library.
 
-## Task 1: Define the Problem
-- Build a testing suite for an existing application.
+## Project Features
 
-## Task 2: Determine the Design
-- Identify the key features of this project.
+- Display transactions on startup by fetching from a local API.
+- Add new transactions from a form and persist them with a POST request.
+- Search transactions by description or category.
+- Sort transactions by description or category.
+- Validate core behaviors with a focused automated test suite.
 
-## Task 3: Develop the Code
-- One feature needs to be completed: the search functionality.
+## Screenshot
 
-## Task 4: Test and Refine
-- Build a test suite using Vitest to test key features:
-  - Display transactions
-  - Add transactions
-  - Search transactions and sort transactions
+![Application preview](./public/app-screenshot.svg)
 
-## Task 5: Document and Maintain
-- Commit as you go, writing meaningful commit messages.
-- Push commit history to GitHub periodically and when the lab is complete.
+## Tech Stack
 
-## Tools and Resources
-- Vitest: [Vitest Documentation](https://vitest.dev/guide/)
+- React 19
+- Vite 6
+- Vitest 3
+- Testing Library (`@testing-library/react`, `@testing-library/user-event`, `@testing-library/jest-dom`)
+- json-server
 
-## Instructions
+## Getting Started
 
-### Set Up
-Before we begin coding, let's complete the initial setup for this lesson:
+### Prerequisites
 
-#### Fork and Clone
-1. Go to the provided GitHub repository link.
-2. Fork the repository to your GitHub account.
-3. Clone the forked repository to your local machine.
+- Node.js 18+
+- npm
 
-#### Open and Run File
-1. Open the project in VSCode.
-2. Run `npm install` to install all necessary dependencies.
+### Installation
 
-### Instructions
-#### Task 1: Define the Problem
-- Build a testing suite for an existing application.
+```sh
+npm install
+```
 
-#### Task 2: Determine the Design
-- Identify the key features of this project.
+### Run the App
 
-#### Task 3: Develop, Test, and Refine the Code
+Start frontend:
 
-1. Open the React application in the browser:
-   ```sh
-   npm run dev
-   ```
-2. Run the included backend:
-   ```sh
-   npm run server
-   ```
-3. Create a test branch.
+```sh
+npm run dev
+```
 
-#### Display Transactions Test
-- Create a test suite that will test if transactions are displayed on startup.
+Start backend (json-server on port 6001):
 
-#### Add Transactions Test
-- Create a test suite that will test:
-  - If new transactions are added to the frontend.
-  - If a POST request was called.
+```sh
+npm run server
+```
 
-#### Search Transactions and Sort Transactions Test
-- Create a test suite that will test:
-  - If a change event is triggered, the page updates accordingly.
-  - Search is incomplete, so build out the search functionality based on the test.
+## Available Scripts
 
-4. Push the feature branch and open a PR on GitHub.
-5. Merge to `main`.
+- `npm run dev` — starts Vite dev server.
+- `npm run server` — starts json-server with `db.json`.
+- `npm test` — runs Vitest.
 
-### Task 4: Document and Maintain
-#### Best Practice Documentation Steps:
-- Add comments to the code to explain purpose and logic.
-- Clarify intent/functionality of code for other developers.
-- Add screenshots of completed work included in Markdown in `README.md`.
-- Update `README.md` to reflect the functionality of the application following [Make a README](https://makeareadme.com).
-- Delete any stale branches on GitHub.
-- Remove unnecessary/commented-out code.
-- If needed, update `.gitignore` to remove sensitive data.
+## Testing Coverage
 
-### Submission
-- Once the test suite is built, submit the link to the GitHub repository on Canvas.
+The suite includes tests for:
 
-### Grading Criteria
-- The application has test suites.
-- The application tests if transactions display on load.
-- The application tests if a new transaction can be added.
-- The application tests if search functionality updates the page correctly.
+- Transactions render on initial load.
+- New transaction submission updates the UI.
+- Transaction submission triggers a POST request.
+- Search input change filters displayed transactions.
+- Sort change updates transaction order.
+
+## Project Structure
+
+- `src/components` — UI components and container logic.
+- `src/__tests__` — test setup and test suites.
+- `db.json` — local transaction data used by json-server.
+
+## Notes for Contributors
+
+- Keep business logic in container-level components.
+- Prefer test-driven updates for user-facing behavior changes.
+- Use meaningful commit messages and short-lived feature branches.
 
